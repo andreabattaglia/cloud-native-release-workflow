@@ -6,13 +6,11 @@ on:
   push:
     branches:
       - develop
-      - release
     paths:
       - '!.github/workflows/**'
   pull_request:
     branches:
       - develop
-      - release
     paths:
       - '!.github/workflows/**'
 
