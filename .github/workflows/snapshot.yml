@@ -12,6 +12,7 @@ on:
 
 jobs:
   snapshot:
+    environment: development
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
