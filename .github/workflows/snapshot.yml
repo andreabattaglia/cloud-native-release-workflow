@@ -6,13 +6,9 @@ on:
   push:
     branches:
       - develop
-    paths:
-      - '!.github/workflows/**'
   pull_request:
     branches:
       - develop
-    paths:
-      - '!.github/workflows/**'
 
 jobs:
   snapshot:
