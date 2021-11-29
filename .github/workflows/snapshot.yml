@@ -57,5 +57,5 @@ jobs:
       - name: Push Image
         run: |
           mvn -B -Pprod,native oc:build oc:push                          \
-          -Djkube.docker.push.username=${{ secrets.QUAY_MANUFACTURING_USERNAME }}      \
-          -Djkube.docker.push.password=${{ secrets.QUAY_MANUFACTURING_PASSWORD }}
+          -Djkube.docker.push.username=${{ secrets.QUAY_OWN_USERNAME }}      \
+          -Djkube.docker.push.password=${{ secrets.QUAY_OWN_PASSWORD }}
