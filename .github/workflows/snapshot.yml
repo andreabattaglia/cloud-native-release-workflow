@@ -6,19 +6,9 @@ on:
   push:
     branches:
       - develop
-<<<<<<< HEAD
-=======
-    paths:
-      - '!.github/workflows/**'
->>>>>>> branch 'main' of git@github.com:andreabattaglia/cloud-native-release-workflow.git
   pull_request:
     branches:
       - develop
-<<<<<<< HEAD
-=======
-    paths:
-      - '!.github/workflows/**'
->>>>>>> branch 'main' of git@github.com:andreabattaglia/cloud-native-release-workflow.git
 
 jobs:
   snapshot:
