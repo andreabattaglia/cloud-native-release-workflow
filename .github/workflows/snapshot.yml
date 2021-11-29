@@ -43,6 +43,11 @@ jobs:
                 "password": "${env.ARTIFACTORY_TOKEN_REF}"
               }
             ]
+      - name: Build with Maven
+        env:
+           ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
+           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
+        run: mvn package -B -Pprod,native
       - name: Push Image
         run: |
           mvn -B -Pprod,native oc:build oc:push                          \
