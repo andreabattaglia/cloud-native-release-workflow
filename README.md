@@ -1,3 +1,3 @@
 # cloud-native-release-workflow
 
-trigger  2
+trigger  3
