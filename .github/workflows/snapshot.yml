@@ -5,13 +5,18 @@ on:
   
   push:
     branches:
-      - develop
+      - release
+    paths-ignore:
+      - .github/workflows/**
   pull_request:
     branches:
-      - develop
+      - release
+    paths-ignore:
+      - .github/workflows/**
 
 jobs:
   snapshot:
+    environment: development
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
@@ -47,7 +52,7 @@ jobs:
         env:
            ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
            ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
-        run: mvn -B -Pprod,native deploy
+        run: mvn package -B -Pprod,native
       - name: Push Image
         run: |
           mvn -B -Pprod,native oc:build oc:push                          \

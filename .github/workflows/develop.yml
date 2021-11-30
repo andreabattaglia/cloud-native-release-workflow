@@ -1,18 +1,23 @@
-name: Compile and Test Feature
+name: Test Builds
 
 on:
   workflow_dispatch:
   
   push:
     branches:
-      - feature/*
+      - develop
+    paths-ignore:
+      - .github/workflows/**
+      
   pull_request:
     branches:
-      - feature/*
+      - develop
+    paths-ignore:
+      - .github/workflows/**
 
 jobs:
-  build:
-    name: Build
+  snapshot:
+    environment: development
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
@@ -27,7 +32,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
-          distribution: 'temurin'
+          distribution: 'adopt'
       - name: Setup Maven settings.xml
         uses: whelk-io/maven-settings-xml-action@v18
         with:
@@ -44,13 +49,13 @@ jobs:
                 "password": "${env.ARTIFACTORY_TOKEN_REF}"
               }
             ]
-      - name: Build with Maven
+      - name: Build JDK
         env:
            ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
            ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
-        run: mvn -B -Pprod deploy
-      # - name: Push Image
-      #   run: |
-      #     mvn -B -Pprod oc:build oc:push                          \
-      #     -Djkube.docker.push.username=${{ secrets.QUAY_ALL_USERNAME }}      \
-      #     -Djkube.docker.push.password=${{ secrets.QUAY_ALL_PASSWORD }}
+        run: ./mvnw package -B
+      - name: Build NATIVE
+        env:
+           ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
+           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
+        run: ./mvnw package -B -Pnative
