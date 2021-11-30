@@ -5,10 +5,10 @@ on:
   
   push:
     branches:
-      - release
+      - develop
   pull_request:
     branches:
-      - release
+      - develop
 
 jobs:
   snapshot:
@@ -44,13 +44,13 @@ jobs:
                 "password": "${env.ARTIFACTORY_TOKEN_REF}"
               }
             ]
-      - name: Build with Maven
+      - name: Build JDK
         env:
            ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
            ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
-        run: mvn package -B -Pprod,native
-      - name: Push Image
-        run: |
-          mvn -B -Pprod,native oc:build oc:push                          \
-          -Djkube.docker.push.username=${{ secrets.QUAY_OWN_USERNAME }}      \
-          -Djkube.docker.push.password=${{ secrets.QUAY_OWN_PASSWORD }}
+        run: ./mvnw package -B
+      - name: Build NATIVE
+        env:
+           ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
+           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
+        run: ./mvnw package -B -Pnative
