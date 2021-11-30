@@ -1,4 +1,4 @@
-name: Snapshot
+name: Test Builds
 
 on:
   workflow_dispatch:
