@@ -6,9 +6,13 @@ on:
   push:
     branches:
       - release
+    paths-ignore:
+      - .github/workflows/**
   pull_request:
     branches:
       - release
+    paths-ignore:
+      - .github/workflows/**
 
 jobs:
   snapshot:
