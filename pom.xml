@@ -223,7 +223,7 @@
             <properties>
                 <jkube.environment>develop</jkube.environment>
                 <jkube.build.strategy>jib</jkube.build.strategy>
-                <jkube.generator.name>quay.io/abattagl/${project.name}:${project.version}</jkube.generator.name>
+                <jkube.generator.name>quay.io/abattagl/cloud-native-release-workflow:${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-SNAPSHOT</jkube.generator.name>
             </properties>
         </profile>
         <profile>
@@ -231,7 +231,7 @@
             <properties>
                 <jkube.environment>release</jkube.environment>
                 <jkube.build.strategy>jib</jkube.build.strategy>
-                <jkube.generator.name>quay.io/abattagl/${project.name}:${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-RC</jkube.generator.name>
+                <jkube.generator.name>quay.io/abattagl/cloud-native-release-workflow:${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-RC</jkube.generator.name>
             </properties>
         </profile>
         <profile>
@@ -239,7 +239,7 @@
             <properties>
                 <jkube.environment>prod</jkube.environment>
                 <jkube.build.strategy>jib</jkube.build.strategy>
-                <jkube.generator.name>quay.io/abattagl/${project.name}:${project.version}</jkube.generator.name>
+                <jkube.generator.name>quay.io/abattagl/cloud-native-release-workflow:${project.version}</jkube.generator.name>
             </properties>
         </profile>
     </profiles>
