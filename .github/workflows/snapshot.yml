@@ -55,6 +55,6 @@ jobs:
         run: mvn package -B -Pprod,native
       - name: Push Image
         run: |
-          mvn -B -Pdevelop,native oc:build oc:push  -Djkube.generator.name=quay.io/abattagl/cloud-native-release-workflow:${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-SNAPSHOT                         \
+          mvn -B -Pdevelop,native oc:build oc:push                           \
           -Djkube.docker.push.username=${{ secrets.QUAY_OWN_USERNAME }}      \
           -Djkube.docker.push.password=${{ secrets.QUAY_OWN_PASSWORD }}
