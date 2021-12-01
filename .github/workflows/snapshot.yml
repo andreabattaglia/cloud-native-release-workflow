@@ -8,11 +8,11 @@ on:
       - develop
     paths-ignore:
       - .github/workflows/**
-  pull_request:
-    branches:
-      - develop
-    paths-ignore:
-      - .github/workflows/**
+#  pull_request:
+#    branches:
+#      - develop
+#    paths-ignore:
+#      - .github/workflows/**
 
 jobs:
   snapshot:
