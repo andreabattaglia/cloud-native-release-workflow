@@ -15,7 +15,7 @@ on:
       - .github/workflows/**
 
 jobs:
-  snapshot:
+  releasecandidate:
     environment: development
     runs-on: ubuntu-latest
     steps:
