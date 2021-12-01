@@ -9,6 +9,7 @@ on:
   
 jobs:
   build:
+    environment: development
     name: Build and Push image
     runs-on: ubuntu-latest
     steps:

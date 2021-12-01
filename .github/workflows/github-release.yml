@@ -14,7 +14,8 @@ on:
       - .github/workflows/**
 
 jobs:
-  build:
+  release:
+    environment: development
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
