@@ -221,7 +221,7 @@
         <profile>
             <id>develop</id>
             <properties>
-                <jkube.environment>prod</jkube.environment>
+                <jkube.environment>develop</jkube.environment>
                 <jkube.build.strategy>jib</jkube.build.strategy>
                 <jkube.generator.name>quay.io/abattagl/${project.name}:${project.version}</jkube.generator.name>
             </properties>
@@ -229,7 +229,7 @@
         <profile>
             <id>release</id>
             <properties>
-                <jkube.environment>prod</jkube.environment>
+                <jkube.environment>release</jkube.environment>
                 <jkube.build.strategy>jib</jkube.build.strategy>
                 <jkube.generator.name>quay.io/abattagl/${project.name}:${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-RC</jkube.generator.name>
             </properties>
