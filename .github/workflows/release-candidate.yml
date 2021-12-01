@@ -1,17 +1,16 @@
-name: Test Builds
+name: Release Candidate
 
 on:
   workflow_dispatch:
   
   push:
     branches:
-      - develop
+      - release
     paths-ignore:
       - .github/workflows/**
-      
   pull_request:
     branches:
-      - develop
+      - release
     paths-ignore:
       - .github/workflows/**
 
@@ -49,13 +48,13 @@ jobs:
                 "password": "${env.ARTIFACTORY_TOKEN_REF}"
               }
             ]
-      - name: Build JDK
+      - name: Build with Maven
         env:
            ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
            ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
-        run: ./mvnw package -B
-      - name: Build NATIVE
-        env:
-           ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
-           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
-        run: ./mvnw package -B -Pnative
+        run: mvn package -B -Pprod,native
+      - name: Push Image
+        run: |
+          mvn -B -Pprod,native oc:build oc:push                          \
+          -Djkube.docker.push.username=${{ secrets.QUAY_OWN_USERNAME }}      \
+          -Djkube.docker.push.password=${{ secrets.QUAY_OWN_PASSWORD }}
