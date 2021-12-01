@@ -5,12 +5,12 @@ on:
   
   push:
     branches:
-      - release
+      - develop
     paths-ignore:
       - .github/workflows/**
   pull_request:
     branches:
-      - release
+      - develop
     paths-ignore:
       - .github/workflows/**
 
@@ -55,6 +55,6 @@ jobs:
         run: mvn package -B -Pprod,native
       - name: Push Image
         run: |
-          mvn -B -Pprod,native oc:build oc:push                          \
+          mvn -B -Pdevelop,native oc:build oc:push                          \
           -Djkube.docker.push.username=${{ secrets.QUAY_OWN_USERNAME }}      \
           -Djkube.docker.push.password=${{ secrets.QUAY_OWN_PASSWORD }}
