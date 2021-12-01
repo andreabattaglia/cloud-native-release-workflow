@@ -44,6 +44,44 @@
         </repository>
     </repositories>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>qiot-central</id>
+            <name>a0lz61zjcqpyh-artifactory-primary-0-releases</name>
+            <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-release-local</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>qiot-snapshots</id>
+            <name>a0lz61zjcqpyh-artifactory-primary-0-snapshots</name>
+            <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-snapshot-local</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>qiot-central</id>
+            <name>a0lz61zjcqpyh-artifactory-primary-0-releases</name>
+            <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-release-local</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <snapshotRepository>
+            <id>qiot-snapshots</id>
+            <name>a0lz61zjcqpyh-artifactory-primary-0-snapshots</name>
+            <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-snapshot-local</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
