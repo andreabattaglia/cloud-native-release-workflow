@@ -1,8 +1,6 @@
 name: Build TAG and release container image
 
 on:
-  workflow_dispatch:
-  
   release:
     types:
       - created
