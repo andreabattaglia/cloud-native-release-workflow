@@ -1,3 +1,2 @@
 # cloud-native-release-workflow
-
-trigger  3
+![alt text](https://salesforcegraells.files.wordpress.com/2017/10/gitflow-workflow.jpg)
