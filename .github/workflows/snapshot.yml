@@ -1,4 +1,4 @@
-name: Snapshot
+name: Nightly Build (from Develop branch)
 
 on:
   workflow_dispatch:
