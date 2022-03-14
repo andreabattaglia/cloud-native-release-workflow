@@ -1,4 +1,4 @@
-name: Build TAG and release container image
+name: Build TAG (from main branch)
 
 on:
   release:

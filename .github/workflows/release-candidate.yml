@@ -1,4 +1,4 @@
-name: Release Candidate
+name: Release Candidate (from Release branch)
 
 on:
   workflow_dispatch:
